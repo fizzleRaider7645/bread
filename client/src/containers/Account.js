@@ -8,7 +8,7 @@ class Account extends Component {
     constructor() {
         super()
         this.state = {
-          currentBalance: 100
+          currentBalance: null
         }
       }
     render() {
