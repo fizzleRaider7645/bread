@@ -13,11 +13,12 @@ class User extends Component {
         fetch('http://localhost:3000/api/users/1')
             .then(response => response.json())
             .then(user => this.setState( { user } ))
-    }
+        }
+    
     render() {
-        const userEmail = this.state.user.email
+        const { id, email } = this.state.user
         return (
-            <div key={this.state.user.id} className="User">{userEmail}</div>
+            <div key={id} className="User">{email}</div>
         )
     }
 }
