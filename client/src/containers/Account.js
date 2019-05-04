@@ -11,6 +11,7 @@ class Account extends Component {
         }
       }
     render() {
+      debugger
         return (
             <div className="Account">
             Account
