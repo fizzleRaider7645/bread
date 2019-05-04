@@ -1,5 +1,6 @@
-import React from 'react'
-import { Component } from 'react'
+import React, { Component } from 'react'
+import UserDisplay from '../components/UserDisplay';
+const ROOT = process.env.REACT_APP_API_URL
 
 class User extends Component {
     constructor() {
@@ -10,7 +11,7 @@ class User extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/api/users/1')
+        fetch(`${ROOT}/users/1`)
             .then(response => response.json())
             .then(user => this.setState( { user } ))
         }
@@ -18,7 +19,7 @@ class User extends Component {
     render() {
         const { id, email } = this.state.user
         return (
-            <div key={id} className="User">{email}</div>
+            <div><UserDisplay email={email} /></div>
         )
     }
 }

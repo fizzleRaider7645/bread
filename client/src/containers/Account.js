@@ -1,5 +1,4 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Balance from '../components/Balance'
 import '../App.css';
 
@@ -8,7 +7,7 @@ class Account extends Component {
     constructor() {
         super()
         this.state = {
-          currentBalance: null
+          currentBalance: []
         }
       }
     render() {

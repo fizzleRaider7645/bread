@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import User from './containers/User'
-import Account from './containers/Account'
+import App from './App'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <>
-    <Account />
-    <User />
-    
+    <App />
     </>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
