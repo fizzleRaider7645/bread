@@ -1,25 +1,20 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-
-const userReducer = (state = [], action) => {
-    switch(action.type) {
-        case 'GET_USER_SUCCESS':
-        return action.user;
-
-        default:
-        return state;
-    }
-}
+import accountReducer from './reducers/Account'
 
 const reducers = combineReducers({
-    user: userReducer
+    account: accountReducer
 });
 
-const middleware = [thunk]
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-export default createStore(
-    reducers,
-   applyMiddleware(...middleware)
+const middleware = [thunk]
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export const store = createStore(
+  reducers,
+  composeEnhancers(
+    applyMiddleware(...middleware)
+  )
 );

@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import UserDisplay from '../components/UserDisplay';
+import { connect } from 'react-redux';
+import { getUser } from '../actions/User';
+import '../App.css';
+
 const ROOT = process.env.REACT_APP_API_URL
 
 class User extends Component {
@@ -11,18 +15,22 @@ class User extends Component {
     }
 
     componentDidMount() {
-        fetch(`${ROOT}/users/1`)
-            .then(response => response.json())
-            .then(user => this.setState( { user } ))
-        }
+        this.props.getUser()
+    }
     
     render() {
         const { id, email } = this.state.user
         return (
-            <div><UserDisplay email={email} /></div>
+            <div><UserDisplay /></div>
         )
     }
 }
 
-export default User
+const mapStatetoProps = (state) => {
+    return ({
+      email: state.email
+    })
+  }
+  
+  export default connect(mapStatetoProps, { getUser })(User)
 
