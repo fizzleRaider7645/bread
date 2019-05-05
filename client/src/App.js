@@ -18,6 +18,10 @@ class App extends Component {
         <h1 className="AppTitle" >Bread Expense Tracker</h1>
         {this.state.isLoginOpen && <Login />}
         {this.state.isRegisterOpen && <Register />}
+        <div className="LogOrRegisterButtonsContainer">
+          {/* <button>Login</button>
+          <button>Register</button> */}
+        </div>
       </React.Fragment>
     ); 
   }

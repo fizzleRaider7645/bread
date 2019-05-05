@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+const ROOT = process.env.REACT_APP_API_URL
 
 class Login extends Component {
     constructor() {
@@ -12,6 +13,17 @@ class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
+        var url = `${ROOT}/login`;
+        var data = this.state;
+
+        fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(data), 
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json()).then(response => console.log('Success:', JSON.stringify(response)))
+        .catch(error => console.error('Error:', error));
     }
 
     handleChange = event => {
@@ -24,7 +36,7 @@ class Login extends Component {
     render() {
         return (
             <div className="LoginContainter">
-                <form onSubmit={this.handleSubmit} className="LoginFrom">
+                <form onSubmit={this.handleSubmit} className="LoginForm">
                     <h3 className="LoginHeader">Login</h3>
                     <p><input onChange={this.handleChange} placeholder="Email" name="email" value={this.state.email}></input></p>
                     <p><input onChange={this.handleChange} placeholder="Password" name="password" value={this.state.password}></input></p>
