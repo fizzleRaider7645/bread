@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { connect } from 'react-redux'
+import { login } from '../actions/App'
 const ROOT = process.env.REACT_APP_API_URL
 
 class Login extends Component {
@@ -11,19 +13,13 @@ class Login extends Component {
         }
       }
 
+      resetState = () => {
+          this.setState({email: '', password: ''})
+      }
+
     handleSubmit = event => {
         event.preventDefault()
-        var url = `${ROOT}/login`;
-        var data = this.state;
-
-        fetch(url, {
-            method: 'POST', 
-            body: JSON.stringify(data), 
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json()).then(response => console.log('Success:', JSON.stringify(response)))
-        .catch(error => console.error('Error:', error));
+        this.props.login(this.state)
     }
 
     handleChange = event => {
@@ -47,4 +43,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default connect(null, { login })(Login)
