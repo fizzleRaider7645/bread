@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <h1 className="AppTitle" >Bread Expense Tracker</h1>
         {this.state.isLoginOpen && <Login />}
         {this.state.isRegisterOpen && <Register />}
       </React.Fragment>

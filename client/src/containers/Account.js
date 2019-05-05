@@ -20,8 +20,6 @@ class Account extends Component {
         return (
             <div className="Account">
             Account
-            {this.props.balance}
-            {/* <Balance balance={this.state.account.balance}/> */}
             </div>
         )
     }

@@ -10,15 +10,25 @@ class Login extends Component {
         }
       }
 
+    handleSubmit = event => {
+        event.preventDefault()
+    }
+
+    handleChange = event => {
+        const name = event.target.name
+        this.setState({
+            [name]: event.target.value
+        })
+    }
+
     render() {
         return (
             <div className="LoginContainter">
-                <form className="LoginFrom">
+                <form onSubmit={this.handleSubmit} className="LoginFrom">
                     <h3 className="LoginHeader">Login</h3>
-                    <p><label htmlFor="LoginEmail">Email: </label>
-                    <input name="LoginEmail"></input></p>
-                    <p><label htmlFor="LoginPassword">Password: </label>
-                    <input name="LoginPassword"></input></p>
+                    <p><input onChange={this.handleChange} placeholder="Email" name="email" value={this.state.email}></input></p>
+                    <p><input onChange={this.handleChange} placeholder="Password" name="password" value={this.state.password}></input></p>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         )

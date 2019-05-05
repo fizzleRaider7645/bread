@@ -10,17 +10,27 @@ class Register extends Component {
         }
       }
 
+    handleSubmit = event => {
+        event.preventDefault()
+    }
+
+    handleChange = event => {
+        const name = event.target.name
+        this.setState({
+            [name]: event.target.value
+        })
+    }
+
     render() {
         return (
-            <div className="RegisterContainer">
-             <form className="RegisterFrom">
-                <h3 className="RegisterHeader">Register</h3>
-                <p><label htmlFor="RegisterEmail">Email: </label>
-                <input name="RegisterEmail"></input></p>
-                <p><label htmlFor="RegisterPassword">Password: </label>
-                <input name="RegisterPassword"></input></p>
-            </form>
-        </div>
+            <div className="RegisterContainter">
+                <form onSubmit={this.handleSubmit} className="RegisterFrom">
+                    <h3 className="RegisterHeader">Register</h3>
+                    <p><input onChange={this.handleChange} placeholder="Email" name="email" value={this.state.email}></input></p>
+                    <p><input onChange={this.handleChange} placeholder="Password" name="password" value={this.state.password}></input></p>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         )
     }
 }
