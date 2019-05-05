@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import User from './containers/User'
-import Account from './containers/Account'
+// import User from './containers/User'
+// import Account from './containers/Account'
+import Login from './containers/Login';
+import Register from './containers/Register';
 
-function App(props) {
-  return (
-    <React.Fragment>
-      <Account />
-      <User />
-    </React.Fragment>
-  );
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      isLoginOpen: true, isRegisterOpen: false
+    };
+  }
+  render() {
+    return (
+      <React.Fragment>
+        {this.state.isLoginOpen && <Login />}
+        {this.state.isRegisterOpen && <Register />}
+      </React.Fragment>
+    ); 
+  }
 }
 
 export default App;

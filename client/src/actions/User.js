@@ -1,10 +1,10 @@
 const ROOT = process.env.REACT_APP_API_URL
 
 /* Action Creator - GET USER */
-const setUser = user => {
+const setUser = payload => {
     return {
         type: 'GET_USER',
-        user
+        payload
     }
 }
 
