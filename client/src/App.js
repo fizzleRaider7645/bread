@@ -13,14 +13,14 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      isLoginOpen: true, isRegisterOpen: false
+      isLoginOpen: true, isRegisterOpen: true
     };
   }
   render() {
     return (
       <React.Fragment>
         <h1 className="AppTitle" >Bread Expense Tracker</h1>
-          {this.props.login.login ? 
+          {/* {this.props.login.login ? 
           <div>
             <BrowserRouter>
             <Switch>
@@ -34,7 +34,9 @@ class App extends Component {
             <Route exact path="*" component={Login}/>
             </Switch>
             </BrowserRouter>
-          </div>}
+          </div>} */}
+          <Register />
+          <Login />
       </React.Fragment>
     ); 
   }

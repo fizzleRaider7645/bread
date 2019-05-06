@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    # before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
         @users = User.all
@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
         if user.save
             render json: user
         else
-            render json: { message: user.errors }, status: 400
+            render json: { message: user.errors.full_messages }, status: 400
         end
     end
 
@@ -37,6 +37,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:email, :password)
+        params.permit(:email, :password)
     end
 end

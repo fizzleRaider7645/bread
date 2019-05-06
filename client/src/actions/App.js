@@ -8,6 +8,18 @@ export const login = (data) => {
             headers:{
                 'Content-Type': 'application/json'
             }
-        }).then(res => res.json()).then(response => dispatch({type: 'LOGIN_SUCCESS', payload: response})).catch(error => console.error('Error:', error));
+        }).then(res => res.json()).then(response => dispatch({type: 'LOGIN_SUCCESS', payload: response})).catch(error => alert('Enter Valid Email & Password'));
+    }
+}
+
+export const register = (data) => {
+    return dispatch => {
+        return fetch(`${ROOT}/signup`, {
+            method: 'POST', 
+            body: JSON.stringify(data), 
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json()).then(response => dispatch({type: 'REGISTER_SUCCESS', payload: response})).catch(error => alert('Enter Valid Email & Password to Register'));
     }
 }

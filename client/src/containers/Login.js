@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux'
 import { login } from '../actions/App'
-const ROOT = process.env.REACT_APP_API_URL
 
 class Login extends Component {
     constructor() {
@@ -11,10 +10,6 @@ class Login extends Component {
             email: '',
             password: ''
         }
-      }
-
-      resetState = () => {
-          this.setState({email: '', password: ''})
       }
 
     handleSubmit = event => {

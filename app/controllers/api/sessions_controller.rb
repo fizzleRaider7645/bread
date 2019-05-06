@@ -1,14 +1,20 @@
-# require 'pry'
-
 class Api::SessionsController < ApplicationController
+    # skip_before_action :authorized, only: [:login]
     
     def login
-        @user = User.find_by(email: params[:email])
-        if @user.present? && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            render json: @user
+        auth_object = Authentication.new(user_login_params)
+        if auth_object.authenticate
+          render json: {
+            user: auth_object, message: "Login successful!", token: auth_object.generate_token }, status: :ok
         else
-            render JSON status: 400
+          render json: {
+            message: "Incorrect username/password combination"}, status: :unauthorized
         end
+      end
+
+    private
+
+    def user_login_params
+        params.permit(:email, :password)
     end
 end
