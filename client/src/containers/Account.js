@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import Balance from '../components/Balance'
 import { connect } from 'react-redux';
 // import { getAccount } from '../actions/Account';
+import { API_URL } from '../actions/ApiUrl'
 import '../App.css';
 
 class Account extends Component {
@@ -13,7 +14,7 @@ class Account extends Component {
       }
 
     // componentDidMount() {
-    //   this.props.getAccount()
+    //   fetch(`${ API_URL }/`)
     // }
 
     render() {

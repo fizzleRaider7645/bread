@@ -55,12 +55,28 @@ class App extends Component {
 
   }
 
+  handleLogOut = () => {
+    fetch(`${ API_URL }/logout`, {
+      method: 'DELETE',
+      headers: {
+        token: Auth.getToken(),
+        'Authorization': `Token ${ Auth.getToken() }`
+      }
+    }).then( res => {
+      Auth.deauthenticateToken()
+      this.setState({
+        auth: Auth.isUserAuthenticated()
+      })
+    }).catch(err => console.log(err))
+  }
+
   render() {
     return (
       <Router>
         <Link to="/login">Login </Link>
         <Link to="/register">Register </Link>
         <Link to="/account">Account </Link>
+        <button onClick={this.handleLogOut}>Log Out</button>
         <React.Fragment>
         <h1 className="AppTitle" >Bread Expense Tracker</h1>
           <Route 
