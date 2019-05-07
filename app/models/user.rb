@@ -9,9 +9,9 @@ class User < ApplicationRecord
         self.update_columns(auth_token: nil)
     end
 
-    def self.validate_login(email, password)
-        user = User.find_by(email: email)
-        if user && user.authenticate(password)
+    def self.validate_login(login_params)
+        user = User.find_by(email: login_params[:email])
+        if user && user.authenticate(login_params[:password])
             user
         end
     end

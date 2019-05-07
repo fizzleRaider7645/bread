@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Balance from '../components/Balance'
 import { connect } from 'react-redux';
-import { getAccount } from '../actions/Account';
+// import { getAccount } from '../actions/Account';
 import '../App.css';
 
 class Account extends Component {
@@ -12,9 +12,9 @@ class Account extends Component {
         }
       }
 
-    componentDidMount() {
-      this.props.getAccount()
-    }
+    // componentDidMount() {
+    //   this.props.getAccount()
+    // }
 
     render() {
         return (
@@ -25,10 +25,11 @@ class Account extends Component {
     }
 }
 
-const mapStatetoProps = (state) => {
-  return ({
-    balance: state.account.balance
-  })
-}
+// const mapStatetoProps = (state) => {
+//   return ({
+//     balance: state.account.balance
+//   })
+// }
 
-export default connect(mapStatetoProps, { getAccount })(Account)
+// export default connect(mapStatetoProps, { getAccount })(Account)
+export default Account
