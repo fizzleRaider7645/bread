@@ -12,10 +12,10 @@ class Register extends Component {
         }
       }
 
-      handleSubmit = event => {
-        event.preventDefault()
-        // this.props.register(this.state)
-    }
+    //   handleSubmit = event => {
+    //     event.preventDefault()
+    //     // this.props.register(this.state)
+    // }
 
     handleChange = event => {
         const name = event.target.name
@@ -27,7 +27,7 @@ class Register extends Component {
     render() {
         return (
             <div className="RegisterContainter">
-                <form onSubmit={this.handleSubmit} className="RegisterForm">
+                <form onSubmit={(event) => this.props.handleRegistrationSubmit(event, this.state) } className="RegisterForm">
                     <h3 className="RegisterHeader">Register</h3>
                     <p><input onChange={this.handleChange} placeholder="Email" name="email" value={this.state.email}></input></p>
                     <p><input onChange={this.handleChange} placeholder="Password" name="password" value={this.state.password}></input></p>
@@ -38,4 +38,5 @@ class Register extends Component {
     }
 }
 
-export default connect(null, null)(Register)
+// export default connect(null, null)(Register)
+export default Register
