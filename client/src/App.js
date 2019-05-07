@@ -3,11 +3,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { connect } from 'react-redux';
 // import User from './containers/User'
-// import Account from './containers/Account'
 import Login from './containers/Login';
 import Register from './containers/Register';
 import Account from './containers/Account';
-import { login } from './actions/App'
+// import { returnUser } from './actions/App'
 
 class App extends Component {
   constructor() {
@@ -16,11 +15,25 @@ class App extends Component {
       isLoginOpen: true, isRegisterOpen: true
     };
   }
+/* get the session - via function 
+   determine if user is logged in
+   if so, set login to be true else to false
+*/
+  // componentDidMount() {
+  //   const cookies = document.cookie.split(';')
+  //   const baked = {}
+  //   cookies.forEach((cookie) => {
+  //     let pieces = cookie.split('=')
+  //     baked[pieces[0]] = pieces[1]
+  //   })
+  //   this.props.returnUser(baked['userLoggedin'])
+  // }
+
   render() {
     return (
       <React.Fragment>
         <h1 className="AppTitle" >Bread Expense Tracker</h1>
-          {/* {this.props.login.login ? 
+          {this.props.login.login ? 
           <div>
             <BrowserRouter>
             <Switch>
@@ -34,9 +47,7 @@ class App extends Component {
             <Route exact path="*" component={Login}/>
             </Switch>
             </BrowserRouter>
-          </div>} */}
-          <Register />
-          <Login />
+          </div>}
       </React.Fragment>
     ); 
   }

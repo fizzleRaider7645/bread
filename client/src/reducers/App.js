@@ -4,6 +4,8 @@ export default (state = {login: false}, action) => {
         return { ...state, login: true, userInfo: action.payload }
         case 'REGISTER_SUCCESS':
         return { ...state, login: true, userInfo: action.payload }
+        // case 'RETURNED_USER':
+        // return { ...state, login :true, cookie: action.payload }
         default:
             return state;
     }

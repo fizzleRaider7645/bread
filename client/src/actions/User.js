@@ -1,4 +1,4 @@
-const ROOT = process.env.REACT_APP_API_URL
+// const ROOT = process.env.REACT_APP_API_URL
 
 /* Action Creator - GET USER */
 const setUser = payload => {

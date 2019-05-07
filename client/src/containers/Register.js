@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import '../App.css';
-import { register } from '../actions/App'
+// import { register } from '../actions/App'
 
 class Register extends Component {
     constructor() {
@@ -14,7 +14,7 @@ class Register extends Component {
 
       handleSubmit = event => {
         event.preventDefault()
-        this.props.register(this.state)
+        // this.props.register(this.state)
     }
 
     handleChange = event => {
@@ -38,4 +38,4 @@ class Register extends Component {
     }
 }
 
-export default connect(null, { register })(Register)
+export default connect(null, null)(Register)

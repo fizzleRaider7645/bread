@@ -1,20 +1,22 @@
 class Api::AccountsController < ApplicationController
-    # before_action :set_account, only: [:show, :edit, :update, :destroy]
-
+    before_action :require_login, except: [:index, :show]
+    before_action :set_account, except: [:create, :index]
+    
     def index
+        @accounts = Account.all
+        render json: { accounts: @accounts   }
     end
 
     def create
-        account = Account.new(user_params)
+        account = Account.new(account_params)
         if account.save
-            render json: account
+            render json: { account: account }
         else
             render json: { message: account.errors }, status: 400
         end
     end
 
     def show
-        set_account
         render json: @account
     end
 
