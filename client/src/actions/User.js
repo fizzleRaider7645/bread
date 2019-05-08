@@ -1,4 +1,5 @@
-// const ROOT = process.env.REACT_APP_API_URL
+import { API_URL } from './ApiUrl'
+import Auth from '../modules/Auth'
 
 /* Action Creator - GET USER */
 const setUser = payload => {
@@ -11,9 +12,12 @@ const setUser = payload => {
 /* Async Action - GET USER */
 export const getUser = () => {
     return dispatch => {
-        return fetch(`${ROOT}/users/1`)
-            .then(response => response.json())
-            .then(user => dispatch(setUser(user)))
-            .catch(error => console.log(error));
+        return fetch(`${ API_URL }/account`, {
+            method: 'GET',
+            headers: {
+              token: Auth.getToken(),
+              'Authorization': `Token ${Auth.getToken()}`
+            }
+        }).then(res => res.json()).then(user => dispatch(setUser(user)))
     }
 }

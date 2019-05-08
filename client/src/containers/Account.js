@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-// import Balance from '../components/Balance'
 import { connect } from 'react-redux';
-// import { getAccount } from '../actions/Account';
-import User from './User'
-import { API_URL } from '../actions/ApiUrl'
-import '../App.css';
+import User from './User';
+import { API_URL } from '../actions/ApiUrl';
 import Auth from '../modules/Auth';
+import '../App.css';
 
 class Account extends Component {
     constructor() {
