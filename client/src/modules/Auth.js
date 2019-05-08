@@ -1,10 +1,13 @@
 class Auth {
     static authenticateToken(token) {
+        token === undefined ? alert('Invalid Login!') :
         sessionStorage.setItem('token', token);
     }
 
     static isUserAuthenticated() {
-        return sessionStorage.getItem('token') !== null;
+        // const token = sessionStorage.getItem('token')
+        const token = this.getToken()
+        return token !== null
     }
 
     static deauthenticateToken() {

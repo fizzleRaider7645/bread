@@ -2,14 +2,16 @@ class Api::UsersController < ApplicationController
     before_action :require_login, except: [:create]
 
     def create
-        user = User.create!(user_params)
+        user = User.create(user_params)
+        user.account = Account.new
+        user.save
         render json: { token: user.auth_token }
     end
 
-    def profile
+    def account
         user = User.find_by_auth_token!(request.headers[:token])
-        account = user.account
-        render json: { user: { id: user.id, email: user.email, account: account  } }
+        # account = user.account
+        render json: user
     end
 
     private

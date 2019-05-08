@@ -47,6 +47,7 @@ class App extends Component {
       }
     }).then(res => res.json())
     .then(res => {
+      console.log(res)
       Auth.authenticateToken(res.token)
       this.setState({
         auth: Auth.isUserAuthenticated()
@@ -90,7 +91,7 @@ class App extends Component {
             <Login handleLoginSubmit={this.handleLoginSubmit} /> }
           />
           <Route exact path="/account" render={ () => (!this.state.auth) ? <Redirect to="/login" /> :
-            < Account/>  }/>
+            <Account/>  }/>
         </React.Fragment>
       </Router>
     ); 

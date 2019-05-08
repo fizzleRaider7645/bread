@@ -1,34 +1,42 @@
 import React, { Component } from 'react'
-// import UserDisplay from '../components/UserDisplay';
+import Balance from '../components/Balance'
 import { connect } from 'react-redux';
-import { getUser } from '../actions/User';
+import Auth from '../modules/Auth'
+import { API_URL } from '../actions/ApiUrl'
 import '../App.css';
+import UserDisplay from '../components/UserDisplay';
 
 class User extends Component {
     constructor() {
         super()
         this.state = {
-            user: []
+            account: []
         };
     }
 
     componentDidMount() {
-        this.props.getUser()
+        fetch(`${ API_URL }/account`, {
+            method: 'GET',
+            headers: {
+              token: Auth.getToken(),
+              'Authorization': `Token ${Auth.getToken()}`
+            }
+        }).then(res => res.json()).then(res => this.setState( res ))
     }
     
     render() {
-        // const { id, email } = this.state.user
         return (
-            <div>{this.state.user.email}</div>
+            <div>User: {this.state.email} <UserDisplay /></div>
         )
     }
 }
 
-const mapStatetoProps = (state) => {
-    return ({
-      user: state.user
-    })
-  }
+// const mapStatetoProps = (state) => {
+//     return ({
+//       user: state.user
+//     })
+//   }
   
-  export default connect(mapStatetoProps, { getUser })(User)
+//   export default connect(mapStatetoProps, { getUser })(User)
+export default User
 

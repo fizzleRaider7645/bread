@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 // import Balance from '../components/Balance'
 import { connect } from 'react-redux';
 // import { getAccount } from '../actions/Account';
+import User from './User'
 import { API_URL } from '../actions/ApiUrl'
 import '../App.css';
+import Auth from '../modules/Auth';
 
 class Account extends Component {
     constructor() {
@@ -13,14 +15,15 @@ class Account extends Component {
         }
       }
 
-    // componentDidMount() {
-    //   fetch(`${ API_URL }/`)
-    // }
+    componentDidMount() {
+      
+    }
 
     render() {
         return (
             <div className="Account">
             Account
+            <User />
             </div>
         )
     }
