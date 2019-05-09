@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/User'
-import TransactionDashboard from './TransactionDashboard'
+import Transaction from './TransactionDashboard'
 import '../App.css';
 
 class User extends Component {
@@ -36,7 +36,7 @@ class User extends Component {
         let transactionDashboard;
         
         if (this.state.actuateTransaction) {
-            transactionDashboard = <TransactionDashboard cancelTransaction={this.handleTransactionClick}/>
+            transactionDashboard = <Transaction cancelTransaction={this.handleTransactionClick}/>
         } else {
             transactionButton = <button onClick={this.handleTransactionClick}>Initiate Transaction</button>
         }
