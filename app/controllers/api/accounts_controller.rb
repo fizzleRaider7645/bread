@@ -1,5 +1,6 @@
 class Api::AccountsController < ApplicationController
-    before_action :require_login, except: [:index, :show]
+    # before_action :require_login, except: [:index, :show]
+    before_action :require_login
     before_action :set_account, except: [:create, :index]
     
     def index

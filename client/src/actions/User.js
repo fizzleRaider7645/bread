@@ -1,11 +1,18 @@
 import { API_URL } from './ApiUrl'
 import Auth from '../modules/Auth'
-
+import { GET_USER } from './ActionTypes'
+import { USER_LOGOUT } from './ActionTypes'
 /* Action Creator - GET USER */
 const setUser = payload => {
     return {
-        type: 'GET_USER',
+        type: GET_USER,
         payload
+    }
+}
+
+export const unsetUser = payload => {
+    return dispatch => {
+        dispatch({ type: USER_LOGOUT })
     }
 }
 

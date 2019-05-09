@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import User from './User';
 import { API_URL } from '../actions/ApiUrl';
+// import { unsetUser } from '../actions/User'
 import Auth from '../modules/Auth';
 import '../App.css';
 
@@ -9,29 +10,27 @@ class Account extends Component {
     constructor() {
         super()
         this.state = {
-          account: []
+          balance: []
         }
       }
 
-    componentDidMount() {
+    // componentDidMount() {
       
+    // }
+
+    logOut = (event) => {
+      event.preventDefault();
+      this.props.unsetUser()
     }
 
     render() {
         return (
             <div className="Account">
-            Account
-            <User />
+              <User />
             </div>
         )
     }
 }
 
-// const mapStatetoProps = (state) => {
-//   return ({
-//     balance: state.account.balance
-//   })
-// }
-
-// export default connect(mapStatetoProps, { getAccount })(Account)
 export default Account
+// export default connect(null, { unsetUser })(Account)

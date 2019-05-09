@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Redirect, Switch, Route } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './containers/Login';
 import Register from './containers/Register';
-import Account from './containers/Account'
-import Auth from './modules/Auth'
-import { API_URL } from './actions/ApiUrl'
+import Account from './containers/Account';
+import Auth from './modules/Auth';
+import { unsetUser } from './actions/User'
+import { API_URL } from './actions/ApiUrl';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -47,7 +48,6 @@ class App extends Component {
       }
     }).then(res => res.json())
     .then(res => {
-      console.log(res)
       Auth.authenticateToken(res.token)
       this.setState({
         auth: Auth.isUserAuthenticated()
@@ -68,6 +68,7 @@ class App extends Component {
       this.setState({
         auth: Auth.isUserAuthenticated()
       })
+      this.props.unsetUser()
     }).catch(err => console.log(err))
   }
 
@@ -98,10 +99,11 @@ class App extends Component {
   }
 }
 
-const mapStatetoProps = (state) => {
-  return ({
-    login: state.login
-  })
-}
+// const mapStatetoProps = (state) => {
+//   return ({
+//     login: state.login
+//   })
+// }
 
-export default connect(mapStatetoProps, null)(App)
+export default connect(null, { unsetUser })(App)
+// export default App

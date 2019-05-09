@@ -1,37 +1,52 @@
-import React, { Component } from 'react'
-// import Balance from '../components/Balance'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Auth from '../modules/Auth'
-// import { API_URL } from '../actions/ApiUrl'
 import { getUser } from '../actions/User'
-// import UserDisplay from '../components/UserDisplay';
+import TransactionDashboard from './TransactionDashboard'
 import '../App.css';
 
 class User extends Component {
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //         user: []
+    //     };
+    // }
+
     constructor() {
         super()
         this.state = {
-            user: []
-        };
+            actuateTransaction: false
+        }
     }
 
     componentDidMount() {
         this.props.getUser()
     }
 
-    // componentDidMount() {
-        // fetch(`${ API_URL }/account`, {
-        //     method: 'GET',
-        //     headers: {
-        //       token: Auth.getToken(),
-        //       'Authorization': `Token ${Auth.getToken()}`
-        //     }
-        // }).then(res => res.json()).then(res => this.setState( res ))
-    // }
+    handleTransactionClick = (event) => {
+        if(this.state.actuateTransaction){
+            this.setState({ actuateTransaction: false })
+        } else {
+            this.setState({ actuateTransaction: true })
+        }
+    }
     
     render() {
+        let transactionButton;
+        let transactionDashboard;
+        
+        if (this.state.actuateTransaction) {
+            transactionDashboard = <TransactionDashboard cancelTransaction={this.handleTransactionClick}/>
+        } else {
+            transactionButton = <button onClick={this.handleTransactionClick}>Initiate Transaction</button>
+        }
+
         return (
-            <div>User: {this.props.user.email} </div>
+            <div className="userContainer">
+            User Email: {this.props.user.email} <br />
+            {transactionDashboard} <br />
+            {transactionButton}
+            </div>
         )
     }
 }
