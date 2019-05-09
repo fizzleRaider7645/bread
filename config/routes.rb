@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     post '/signup' => 'users#create'
     post '/login' => 'sessions#create'
     delete '/logout' => 'sessions#destroy'
-    resources :users, :accounts
+    resources :users, :accounts, :transactions
   end
 end
