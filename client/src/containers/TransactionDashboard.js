@@ -26,14 +26,15 @@ class Transaction extends Component {
             withdrawalButton = <button onClick={this.handleClick} name="Withdrawal">Withdrawal</button>
         } else {
             selectTransactionTypelabel = <label>{this.state.transactionType}</label>
-            transactionForm = <TransactionForm />
+            transactionForm = <TransactionForm transactionType={this.state.transactionType}/>
         }
         return (
             <div>
-                {selectTransactionTypelabel} <br />
-                {depositButton} <br />
-                {withdrawalButton} <br />
-                {transactionForm} <br />
+                <br />
+                {selectTransactionTypelabel}<br />
+                {depositButton}<br />
+                {withdrawalButton}<br />
+                {transactionForm}<br />
                 <button onClick={this.props.cancelTransaction}>Cancel Transaction</button>
             </div>
         )
