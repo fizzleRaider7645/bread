@@ -99,11 +99,4 @@ class App extends Component {
   }
 }
 
-// const mapStatetoProps = (state) => {
-//   return ({
-//     login: state.login
-//   })
-// }
-
 export default connect(null, { unsetUser })(App)
-// export default App

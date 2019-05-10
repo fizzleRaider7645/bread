@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { API_URL } from '../actions/ApiUrl'
 import Auth from '../modules/Auth'
-
-// import { actuateTransaction } from '../actions/Transaction'
+import { connect } from 'react-redux'
+import { createTransaction } from '../actions/User'
 import TransactionFormAmountDisplay from '../components/TransactionFormAmountDisplay'
 
 class TransactionForm extends Component {
@@ -10,10 +10,11 @@ class TransactionForm extends Component {
         super(props)
         this.state = {
             transactionAmount: 0,
-            transactionType: this.props.transactionType
+            transactionType: this.props.transactionType,
+            transactionComplete: false
         }
     }
-    actuateDeposit = (state) => {
+    actuateTransaction = (state) => {
         fetch(`${ API_URL }/transactions`, {
             method: 'POST',
             body: JSON.stringify({
@@ -29,10 +30,6 @@ class TransactionForm extends Component {
         }).catch(err => console.log(err))
     }
 
-    actuateWithdrawal = (state) => {
-        alert('withdrawal')
-    }
-
     handleChange = (event) => {
         this.setState({
             transactionAmount: event.target.value
@@ -41,11 +38,12 @@ class TransactionForm extends Component {
 
     handleSubmit = (event, state) => {
         event.preventDefault()
-        if(this.state.transactionType === "Deposit") {
-            this.actuateDeposit(state)
-        } else if(this.state.transactionType === "Withdrawal") {
-            this.actuateWithdrawal(state)
-        }
+        this.props.createTransaction(state)
+        this.actuateTransaction(state)
+        this.setState({
+            transactionComplete: true
+        })
+        this.props.updateUserState()
     }
     
     render() {
@@ -53,12 +51,12 @@ class TransactionForm extends Component {
         return (
             <form onSubmit={ (event) => this.handleSubmit(event, this.state)}>
                 <label>{this.props.type}</label><br />
-                <p><label>{amount}</label></p>
-                <input onChange={this.handleChange} type="text" value={this.state.transactionAmount} placeholder="0" step="0.01" min="0" max="10000"></input><br />
+                <p><label>{this.state.transactionType} Amount: {amount}</label></p>
+                <input onChange={this.handleChange} type="number" value={this.state.transactionAmount} placeholder="0" step="0.01" ></input><br />
                 <button>Submit</button>
             </form>
         )
     }
 }
 
-export default TransactionForm
+export default connect(null, { createTransaction })(TransactionForm)

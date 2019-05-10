@@ -13,7 +13,6 @@ class Api::TransactionsController < ApplicationController
         if @transaction.save
             update_balance(@transaction, @transaction.account)
         end
-        binding.pry
     end
 
     def update_balance(transaction, account)
@@ -22,6 +21,7 @@ class Api::TransactionsController < ApplicationController
         else transaction.transaction_type == "Withdrawal"
             account.balance -= transaction.amount
         end
+        account.save
     end
 
     def transaction_params

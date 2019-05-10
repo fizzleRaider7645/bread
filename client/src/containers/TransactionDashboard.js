@@ -3,7 +3,7 @@ import TransactionForm from './TransactionForm';
 
 class Transaction extends Component {
     constructor(props) {
-        super()
+        super(props)
         this.state = {
             transactionType: null
         }
@@ -26,7 +26,7 @@ class Transaction extends Component {
             withdrawalButton = <button onClick={this.handleClick} name="Withdrawal">Withdrawal</button>
         } else {
             selectTransactionTypelabel = <label>{this.state.transactionType}</label>
-            transactionForm = <TransactionForm transactionType={this.state.transactionType}/>
+            transactionForm = <TransactionForm updateUserState={this.props.updateUserState} transactionType={this.state.transactionType}/>
         }
         return (
             <div>

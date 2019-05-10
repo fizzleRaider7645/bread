@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {connect} from 'react-redux'
 
-const Balance = props => {
-    return (
-        <div className="Balance">{props.balance}</div>
-    )
+class Balance extends Component {
+    constructor(props) {
+        super();
+    }
+    render(){
+        let accountBalance;
+        if(this.props.user.account !== undefined) {
+            accountBalance = this.props.user.account.balance
+        }
+        return (
+            <div className="Balance">${parseFloat(accountBalance).toFixed(2)}</div>
+        )
+    }
 }
 
-export default Balance
+const mapStatetoProps = (state) => {
+    return ({
+        user: state.user
+    })
+  }
+
+export default connect(mapStatetoProps, null)(Balance)

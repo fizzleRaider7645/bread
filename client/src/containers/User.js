@@ -2,16 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/User'
 import Transaction from './TransactionDashboard'
+import Balance from '../components/Balance'
 import '../App.css';
 
 class User extends Component {
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //         user: []
-    //     };
-    // }
-
     constructor() {
         super()
         this.state = {
@@ -30,20 +24,28 @@ class User extends Component {
             this.setState({ actuateTransaction: true })
         }
     }
+
+    updateActuateTransaction = () => {
+        this.setState({
+            actuateTransaction: false
+        })
+    }
     
     render() {
         let transactionButton;
         let transactionDashboard;
-        
+        let accountBalance;
+
         if (this.state.actuateTransaction) {
-            transactionDashboard = <Transaction cancelTransaction={this.handleTransactionClick}/>
+            transactionDashboard = <Transaction updateUserState={this.updateActuateTransaction} cancelTransaction={this.handleTransactionClick}/>
         } else {
             transactionButton = <button onClick={this.handleTransactionClick}>Initiate Transaction</button>
         }
 
         return (
             <div className="userContainer">
-            User Email: {this.props.user.email} <br />
+            User Email: {this.props.user.email}<br />
+            <Balance />
             {transactionDashboard} <br />
             {transactionButton}
             </div>
@@ -58,5 +60,4 @@ const mapStatetoProps = (state) => {
   }
 
 export default connect(mapStatetoProps, { getUser })(User)
-// export default User
 
