@@ -3,6 +3,11 @@ class Api::TransactionsController < ApplicationController
         prepare_and_actuate_transaction(transaction_params)
     end
 
+    def index
+        @transactions = current_user.account.transactions
+        render json: @transactions
+    end
+
     private
 
     def prepare_and_actuate_transaction(transaction_params)

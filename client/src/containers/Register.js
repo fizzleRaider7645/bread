@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import '../App.css';
-// import { register } from '../actions/App'
 
 class Register extends Component {
     constructor() {
@@ -11,11 +9,6 @@ class Register extends Component {
             password: ''
         }
       }
-
-    //   handleSubmit = event => {
-    //     event.preventDefault()
-    //     // this.props.register(this.state)
-    // }
 
     handleChange = event => {
         const name = event.target.name
@@ -38,5 +31,4 @@ class Register extends Component {
     }
 }
 
-// export default connect(null, null)(Register)
 export default Register

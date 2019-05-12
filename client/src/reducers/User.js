@@ -4,8 +4,10 @@ export default (state = initial, action) => {
     switch(action.type) {
         case types.GET_USER:
         return action.payload;
-        case "UPDATE_BALANCE":
+        case types.UPDATE_BALANCE:
         return {...state, account: { balance: action.payload } }
+        case types.GET_TRANSACTION_HISTORY:
+        return {...state, transactions: action.payload }
         case types.USER_LOGOUT:
         return {};
         default:

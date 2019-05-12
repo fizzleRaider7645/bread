@@ -1,19 +1,19 @@
 import { API_URL } from './ApiUrl'
 import Auth from '../modules/Auth'
-import { GET_USER } from './ActionTypes'
-import { USER_LOGOUT } from './ActionTypes'
+import * as types from './ActionTypes'
+
+/* Action Creator - CLEARS REDUX STORE AFTER LOGOUT */
+export const unsetUser = payload => {
+    return dispatch => {
+        dispatch({ type: types.USER_LOGOUT })
+    }
+}
 
 /* Action Creator - GET USER */
 const setUser = payload => {
     return {
-        type: GET_USER,
+        type: types.GET_USER,
         payload
-    }
-}
-
-export const unsetUser = payload => {
-    return dispatch => {
-        dispatch({ type: USER_LOGOUT })
     }
 }
 
@@ -39,10 +39,32 @@ export const createTransaction = (data) => {
         } else {
             currentBalance -= Number(data.transactionAmount)
         }
-        console.log(typeof currentBalance)
         dispatch({
-            type: "UPDATE_BALANCE",
+            type: types.UPDATE_BALANCE,
             payload: currentBalance
         })
     }
 }
+
+const setTransactionHistory = payload => {
+    return {
+        type: types.GET_TRANSACTION_HISTORY,
+        payload
+    }
+}
+
+
+export const getTransactionHistory = () => {
+    return dispatch => {
+        return fetch(`${ API_URL }/transactions`, {
+            method: 'GET',
+            headers: {
+              token: Auth.getToken(),
+              'Authorization': `Token ${Auth.getToken()}`
+            }
+        }).then(res => res.json()).then(transactions => dispatch(setTransactionHistory(transactions)))
+    }
+}
+
+
+

@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import User from './User';
-import { API_URL } from '../actions/ApiUrl';
-import Auth from '../modules/Auth';
 import '../App.css';
 
 class Account extends Component {
@@ -12,12 +9,6 @@ class Account extends Component {
           balance: []
         }
       }
-
-    // logOut = (event) => {
-    //   event.preventDefault();
-    //   this.props.unsetUser()
-    // }
-
     render() {
         return (
             <div className="Account">
@@ -29,4 +20,3 @@ class Account extends Component {
 }
 
 export default Account
-// export default connect(null, { unsetUser })(Account)

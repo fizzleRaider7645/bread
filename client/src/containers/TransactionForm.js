@@ -52,7 +52,9 @@ class TransactionForm extends Component {
             <form onSubmit={ (event) => this.handleSubmit(event, this.state)}>
                 <label>{this.props.type}</label><br />
                 <p><label>{this.state.transactionType} Amount: {amount}</label></p>
-                <input onChange={this.handleChange} type="number" value={this.state.transactionAmount} placeholder="0" step="0.01" ></input><br />
+                <input onChange={this.handleChange} type="number" value={this.state.transactionAmount} step="0.01" ></input><br />
+                <label>Notes: </label><br />
+                <textarea></textarea><br />
                 <button>Submit</button>
             </form>
         )

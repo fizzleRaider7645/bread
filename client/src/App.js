@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom
 import { connect } from 'react-redux';
 import Login from './containers/Login';
 import Register from './containers/Register';
-import Account from './containers/Account';
+import User from './containers/User'
 import Auth from './modules/Auth';
 import { unsetUser } from './actions/User'
 import { API_URL } from './actions/ApiUrl';
@@ -29,6 +29,10 @@ class App extends Component {
       }
     }).then(res => res.json())
     .then(res => {
+      if(res.token === null) {
+        alert('Enter Valid Email & Password')
+        return
+      }
       Auth.authenticateToken(res.token)
       this.setState({
         auth: Auth.isUserAuthenticated()
@@ -80,7 +84,7 @@ class App extends Component {
         <Link to="/account">Account </Link>
         <button onClick={this.handleLogOut}>Log Out</button>
         <React.Fragment>
-        <h1 className="AppTitle" >Bread Expense Tracker</h1>
+        <h1 className="AppTitle" >*Bread* Expense Tracker</h1>
           <Route 
             exact path="/register" 
             render={ () => (this.state.auth) ? <Redirect to="/account" /> : 
@@ -92,7 +96,7 @@ class App extends Component {
             <Login handleLoginSubmit={this.handleLoginSubmit} /> }
           />
           <Route exact path="/account" render={ () => (!this.state.auth) ? <Redirect to="/login" /> :
-            <Account/>  }/>
+            <User/>  }/>
         </React.Fragment>
       </Router>
     ); 
