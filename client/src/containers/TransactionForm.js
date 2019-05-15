@@ -4,6 +4,9 @@ import Auth from '../modules/Auth'
 import { connect } from 'react-redux'
 import { createTransaction } from '../actions/User'
 import TransactionFormAmountDisplay from '../components/TransactionFormAmountDisplay'
+import OutlinedTextField from '../material-ui/TextInput'
+import ContainedButton from '../material-ui/SubmitButton'
+import NumericalInput from '../material-ui/NumericalInput'
 
 class TransactionForm extends Component {
     constructor(props) {
@@ -61,10 +64,13 @@ class TransactionForm extends Component {
             <form onSubmit={ (event) => this.handleSubmit(event, this.state)}>
                 <label>{this.props.type}</label><br />
                 <p><label>{this.state.transactionType} Amount: {amount}</label></p>
-                <input onChange={this.handleInputChange} type="number" value={this.state.transactionAmount} step="0.01" ></input><br />
-                <label>Notes: </label><br />
-                <textarea onChange={this.handleNotesChange}></textarea><br />
-                <button>Submit</button>
+                {/* <input onChange={this.handleInputChange} type="number" value={this.state.transactionAmount} step="0.01" ></input><br /> */}
+                <NumericalInput handleInputChange={this.handleInputChange}/>
+                {/* <label>Notes: </label><br />
+                <textarea onChange={this.handleNotesChange}></textarea><br /> */}
+                <OutlinedTextField handleNotesChange={this.handleNotesChange}/>
+                <ContainedButton class={"submit"}/>
+                {/* <button>Submit</button> */}
             </form>
         )
     }

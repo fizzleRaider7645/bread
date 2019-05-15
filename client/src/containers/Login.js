@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux'
-// import { login } from '../actions/App'
 import ContainedButton from '../material-ui/SubmitButton'
 
 class Login extends Component {
