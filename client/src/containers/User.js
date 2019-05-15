@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/User'
-import Transaction from './TransactionDashboard'
+import TransactionDashboard from './TransactionDashboard'
 import Balance from '../components/Balance'
-import TransactionHistoryDashboard from '../components/TransactionHistoryDashboard'
+import TransactionHistory from '../components/TransactionHistory'
 import { getTransactionHistory } from '../actions/User'
 import '../App.css';
 
@@ -18,7 +18,7 @@ class User extends Component {
 
     componentDidMount() {
         this.props.getUser()
-        this.props.getTransactionHistory()
+        // this.props.getTransactionHistory()
     }
 
     handleTransactionClick = (event) => {
@@ -35,23 +35,23 @@ class User extends Component {
         })
     }
 
-    handleTransactionHistoryClick = (event) => {
-        event.preventDefault();
-        this.setState({
-            showTransactions: this.state.showTransactions ? false : true
-        })
-    }
+    // handleTransactionHistoryClick = (event) => {
+    //     event.preventDefault();
+    //     this.setState({
+    //         showTransactions: this.state.showTransactions ? false : true
+    //     })
+    // }
     
     render() {
         let transactionButton;
         let transactionDashboard;
-        let a;
-        let transactionHistoryButton = <button onClick={this.handleTransactionHistoryClick}>See Transaction History</button>
-        if(this.state.showTransactions) {
-            a = <TransactionHistoryDashboard />
-        }
+        // let a;
+        // let transactionHistoryButton = <button onClick={this.handleTransactionHistoryClick}>See Transaction History</button>
+        // if(this.state.showTransactions) {
+        //     a = <TransactionHistory />
+        // }
         if (this.state.actuateTransaction) {
-            transactionDashboard = <Transaction updateUserState={this.updateActuateTransaction} cancelTransaction={this.handleTransactionClick}/>
+            transactionDashboard = <TransactionDashboard updateUserState={this.updateActuateTransaction} cancelTransaction={this.handleTransactionClick}/>
         } else {
             transactionButton = <button onClick={this.handleTransactionClick}>Initiate Transaction</button>
         }
@@ -62,8 +62,8 @@ class User extends Component {
             <Balance />
             { transactionDashboard } <br />
             { transactionButton }<br />
-            {a}
-            { transactionHistoryButton }
+            {/* { transactionHistoryButton }< br /> */}
+            {/* {a} */}
             </div>
         )
     }

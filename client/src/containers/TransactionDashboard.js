@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react'
 import TransactionForm from './TransactionForm';
+import { API_URL } from '../actions/ApiUrl'
+import Auth from '../modules/Auth'
+import TransactionHistory  from '../components/TransactionHistory';
 
-class Transaction extends Component {
+class TransactionDashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            transactionType: null
+            transactionType: null,
+            transactionHistory: []
         }
     }
 
@@ -14,12 +19,24 @@ class Transaction extends Component {
             transactionType: event.target.name
         })
     }
+
+    handleTransactionHistoryClick = () => {
+        fetch(`${ API_URL }/transactions`, {
+            method: 'GET',
+            headers: {
+                token: Auth.getToken(),
+                'Authorization': `Token ${Auth.getToken()}`
+            }
+        }).then(res => res.json()).then(transactions => this.setState({transactionHistory: transactions}))
+    }
     
     render() {
         let transactionForm;
+        let seeTransactionHistoryButton;
         let depositButton;
         let withdrawalButton;
         let selectTransactionTypelabel;
+        let transactionHistory;
         if(this.state.transactionType === null) {
             selectTransactionTypelabel = <label>Select Type of Transaction: </label>
             depositButton = <button onClick={this.handleClick} name="Deposit">Deposit</button>
@@ -28,6 +45,13 @@ class Transaction extends Component {
             selectTransactionTypelabel = <label>{this.state.transactionType}</label>
             transactionForm = <TransactionForm updateUserState={this.props.updateUserState} transactionType={this.state.transactionType}/>
         }
+
+        if(this.state.transactionHistory.length !== 0) {
+            transactionHistory = <TransactionHistory transactions={this.state.transactionHistory} />
+        } else {
+            seeTransactionHistoryButton = <button onClick={this.handleTransactionHistoryClick}>See Transaction History</button>
+        }
+
         return (
             <div>
                 <br />
@@ -35,10 +59,13 @@ class Transaction extends Component {
                 {depositButton}<br />
                 {withdrawalButton}<br />
                 {transactionForm}<br />
+                {transactionHistory}
+                {seeTransactionHistoryButton}<br /> 
                 <button onClick={this.props.cancelTransaction}>Cancel Transaction</button>
             </div>
         )
     }
 }
 
-export default Transaction
+export default TransactionDashboard
+// export default connect(null, getTransactionHistory)(TransactionDashboard)

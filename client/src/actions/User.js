@@ -9,7 +9,7 @@ export const unsetUser = payload => {
     }
 }
 
-/* Action Creator - GET USER */
+/* Action Creator - GET USER WHEN USER COMPONENT MOUNTS*/
 const setUser = payload => {
     return {
         type: types.GET_USER,

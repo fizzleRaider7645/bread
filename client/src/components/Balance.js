@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 class Balance extends Component {
-    constructor(props) {
+    constructor() {
         super();
     }
     render(){
