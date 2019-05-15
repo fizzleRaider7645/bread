@@ -11,6 +11,7 @@ class TransactionForm extends Component {
         this.state = {
             transactionAmount: 0,
             transactionType: this.props.transactionType,
+            transactionNotes: "",
             transactionComplete: false
         }
     }
@@ -30,9 +31,15 @@ class TransactionForm extends Component {
         }).catch(err => console.log(err))
     }
 
-    handleChange = (event) => {
+    handleInputChange = (event) => {
         this.setState({
             transactionAmount: event.target.value
+        })
+    }
+
+    handleNotesChange = (event) => {
+        this.setState({
+            transactionNotes: event.target.value
         })
     }
 
@@ -52,9 +59,9 @@ class TransactionForm extends Component {
             <form onSubmit={ (event) => this.handleSubmit(event, this.state)}>
                 <label>{this.props.type}</label><br />
                 <p><label>{this.state.transactionType} Amount: {amount}</label></p>
-                <input onChange={this.handleChange} type="number" value={this.state.transactionAmount} step="0.01" ></input><br />
+                <input onChange={this.handleInputChange} type="number" value={this.state.transactionAmount} step="0.01" ></input><br />
                 <label>Notes: </label><br />
-                <textarea></textarea><br />
+                <textarea onChange={this.handleNotesChange}></textarea><br />
                 <button>Submit</button>
             </form>
         )

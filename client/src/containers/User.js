@@ -17,8 +17,7 @@ class User extends Component {
     }
 
     componentDidMount() {
-        this.props.getUser()
-        // this.props.getTransactionHistory()
+        this.props.getUser();
     }
 
     handleTransactionClick = (event) => {
@@ -34,26 +33,14 @@ class User extends Component {
             actuateTransaction: false
         })
     }
-
-    // handleTransactionHistoryClick = (event) => {
-    //     event.preventDefault();
-    //     this.setState({
-    //         showTransactions: this.state.showTransactions ? false : true
-    //     })
-    // }
     
     render() {
         let transactionButton;
         let transactionDashboard;
-        // let a;
-        // let transactionHistoryButton = <button onClick={this.handleTransactionHistoryClick}>See Transaction History</button>
-        // if(this.state.showTransactions) {
-        //     a = <TransactionHistory />
-        // }
         if (this.state.actuateTransaction) {
             transactionDashboard = <TransactionDashboard updateUserState={this.updateActuateTransaction} cancelTransaction={this.handleTransactionClick}/>
         } else {
-            transactionButton = <button onClick={this.handleTransactionClick}>Initiate Transaction</button>
+            transactionButton = <button onClick={this.handleTransactionClick}>See Transaction Dashboard</button>
         }
 
         return (
@@ -62,8 +49,6 @@ class User extends Component {
             <Balance />
             { transactionDashboard } <br />
             { transactionButton }<br />
-            {/* { transactionHistoryButton }< br /> */}
-            {/* {a} */}
             </div>
         )
     }

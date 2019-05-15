@@ -11,11 +11,13 @@ class Api::TransactionsController < ApplicationController
     private
 
     def prepare_and_actuate_transaction(transaction_params)
-        @transaction = Transaction.new(transaction_type: transaction_params[:transactionType], amount: transaction_params[:transactionAmount])
+        @transaction = Transaction.new(transaction_type: transaction_params[:transactionType], amount: transaction_params[:transactionAmount], notes: transaction_params[:transactionNotes])
         @transaction.user = current_user
         @transaction.account = current_user.account
-        
-        if @transaction.save
+        if @transaction.amount <= 0.0
+            render json: { message: 'Must input an amount to complete transaction' }, status: 400
+        else
+            @transaction.save
             update_balance(@transaction, @transaction.account)
         end
     end
@@ -30,6 +32,6 @@ class Api::TransactionsController < ApplicationController
     end
 
     def transaction_params
-        params.require(:transaction).permit(:transactionAmount, :transactionType)
+        params.require(:transaction).permit(:transactionAmount, :transactionType, :transactionNotes)
     end
 end

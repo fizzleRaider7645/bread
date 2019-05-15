@@ -37,6 +37,7 @@ class TransactionDashboard extends Component {
         let withdrawalButton;
         let selectTransactionTypelabel;
         let transactionHistory;
+
         if(this.state.transactionType === null) {
             selectTransactionTypelabel = <label>Select Type of Transaction: </label>
             depositButton = <button onClick={this.handleClick} name="Deposit">Deposit</button>
@@ -59,9 +60,9 @@ class TransactionDashboard extends Component {
                 {depositButton}<br />
                 {withdrawalButton}<br />
                 {transactionForm}<br />
-                {transactionHistory}
+                {transactionHistory}<br />
                 {seeTransactionHistoryButton}<br /> 
-                <button onClick={this.props.cancelTransaction}>Cancel Transaction</button>
+                <button onClick={this.props.cancelTransaction}>Exit Transaction Dashboard</button>
             </div>
         )
     }
