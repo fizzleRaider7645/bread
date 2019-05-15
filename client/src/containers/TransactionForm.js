@@ -27,7 +27,9 @@ class TransactionForm extends Component {
                 'Content-Type': 'application/json'
             }
         }).then( res => {
-            console.log(res)
+            if(res.status === 400) {
+                alert('Invalid: Must Enter an Amount to Complete Transaction')
+            }
         }).catch(err => console.log(err))
     }
 

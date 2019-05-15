@@ -7,6 +7,7 @@ import User from './containers/User'
 import Auth from './modules/Auth';
 import { unsetUser } from './actions/User'
 import { API_URL } from './actions/ApiUrl';
+import Navbar from './components/Navbar'
 import './App.css';
 
 class App extends Component {
@@ -79,12 +80,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Link to="/login">Login </Link>
+        {/* <Link to="/login">Login </Link> */}
         <Link to="/register">Register </Link>
         <Link to="/account">Account </Link>
-        <button onClick={this.handleLogOut}>Log Out</button>
+        {/* <button onClick={this.handleLogOut}>Log Out</button> */}
         <React.Fragment>
-        <h1 className="AppTitle" >*Bread* Expense Tracker</h1>
+        {/* <h1 className="AppTitle" >*Bread* Expense Tracker</h1> */}
+        <Navbar handleLogOut={ this.handleLogOut } userAuth={this.state.auth}/>
           <Route 
             exact path="/register" 
             render={ () => (this.state.auth) ? <Redirect to="/account" /> : 

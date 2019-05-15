@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getUser } from '../actions/User'
 import TransactionDashboard from './TransactionDashboard'
 import Balance from '../components/Balance'
-import TransactionHistory from '../components/TransactionHistory'
 import { getTransactionHistory } from '../actions/User'
 import '../App.css';
 
