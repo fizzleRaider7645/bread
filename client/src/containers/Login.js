@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux'
 // import { login } from '../actions/App'
+import ContainedButton from '../material-ui/SubmitButton'
 
 class Login extends Component {
     constructor() {
@@ -20,13 +21,15 @@ class Login extends Component {
     }
 
     render() {
+        let submitButton;
         return (
             <div className="LoginContainter">
                 <form onSubmit={(event) => this.props.handleLoginSubmit(event, this.state)} className="LoginForm">
                     <h3 className="LoginHeader">Login</h3>
                     <p><input onChange={this.handleChange} placeholder="Email" name="email" value={this.state.email}></input></p>
                     <p><input onChange={this.handleChange} placeholder="Password" name="password" value={this.state.password}></input></p>
-                    <button type="submit">Submit</button>
+                    {/* <button type="submit">Submit</button> */}
+                    <ContainedButton class={"submit"}/>
                 </form>
             </div>
         )

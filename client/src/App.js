@@ -7,7 +7,7 @@ import User from './containers/User'
 import Auth from './modules/Auth';
 import { unsetUser } from './actions/User'
 import { API_URL } from './actions/ApiUrl';
-import Navbar from './components/Navbar'
+import Navbar from './material-ui/Navbar'
 import './App.css';
 
 class App extends Component {
@@ -81,8 +81,8 @@ class App extends Component {
     return (
       <Router>
         {/* <Link to="/login">Login </Link> */}
-        <Link to="/register">Register </Link>
-        <Link to="/account">Account </Link>
+        {/* <Link to="/register">Register </Link> */}
+        {/* <Link to="/account">Account </Link> */}
         {/* <button onClick={this.handleLogOut}>Log Out</button> */}
         <React.Fragment>
         {/* <h1 className="AppTitle" >*Bread* Expense Tracker</h1> */}

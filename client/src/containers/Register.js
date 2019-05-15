@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import ContainedButton from '../material-ui/SubmitButton'
 
 class Register extends Component {
     constructor() {
@@ -24,7 +25,8 @@ class Register extends Component {
                     <h3 className="RegisterHeader">Register</h3>
                     <p><input onChange={this.handleChange} placeholder="Email" name="email" value={this.state.email}></input></p>
                     <p><input onChange={this.handleChange} placeholder="Password" name="password" value={this.state.password}></input></p>
-                    <button type="submit">Submit</button>
+                    {/* <button type="submit">Submit</button> */}
+                    <ContainedButton class={"submit"}/>
                 </form>
             </div>
         )
