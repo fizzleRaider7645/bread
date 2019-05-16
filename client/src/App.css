@@ -1,3 +1,3 @@
-.userContainer, .LoginForm, .RegisterForm, .AppTitle {
+.userContainer, .LoginForm, .RegisterForm, .AppTitle, .LoginTextBox, .LoginPasswordBox {
   text-align: center;
 }

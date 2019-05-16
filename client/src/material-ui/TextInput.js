@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
@@ -36,18 +34,15 @@ handleChange = event => {
 
     return (
       <React.Fragment>
-        <TextField
-          id="outlined-full-width"
+          <TextField
+          id="outlined-multiline-flexible"
           label="Notes"
-          style={{ margin: 8 }}
-          placeholder="..."
-          fullWidth
+          multiline
+          rowsMax="4"
           onChange={this.handleChange}
           margin="normal"
+          placeholder="..."
           variant="outlined"
-          InputLabelProps={{
-            shrink: true,
-          }}
         />
       </React.Fragment>
     );

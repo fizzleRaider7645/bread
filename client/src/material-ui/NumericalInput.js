@@ -6,40 +6,24 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  },
-  dense: {
-    marginTop: 16,
-  },
-  menu: {
-    width: 200,
-  },
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+    },
+    
+    dense: {
+        marginTop: 16,
+    },
+    
+    menu: {
+        width: 200,
+    },
 });
-
-const currencies = [
-  {
-    value: 'USD',
-    label: '$',
-  },
-  {
-    value: 'EUR',
-    label: '€',
-  },
-  {
-    value: 'BTC',
-    label: '฿',
-  },
-  {
-    value: 'JPY',
-    label: '¥',
-  },
-];
 
 class NumericalInput extends React.Component {
     constructor(props) {
@@ -58,10 +42,9 @@ class NumericalInput extends React.Component {
         <TextField
           id="outlined-number"
           label="Amount"
-        //   value={this.state.age}
           onChange={this.handleChange}
           type="number"
-          InputProps={{ inputProps: { min: 0 } }}
+          inputProps={{ min: "0", step: "0.01" }}
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
