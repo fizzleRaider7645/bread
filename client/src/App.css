@@ -1,3 +1,9 @@
-.userContainer, .LoginForm, .RegisterForm, .AppTitle, .TransactionTypeSelector{
+.userContainer, .LoginForm, .RegisterForm, .AppTitle, .TransactionTypeSelector {
   text-align: center;
+}
+
+.TransactionHistory {
+  text-align: center;
+  height:200px;
+  overflow-y: scroll;
 }

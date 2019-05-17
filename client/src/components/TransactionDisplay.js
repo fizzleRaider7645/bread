@@ -3,7 +3,9 @@ import DateDisplay from './DateDisplay'
 
 const TransactionDisplay = props => {
     return (
-    <li><DateDisplay date={props.transaction.created_at}/> - {props.transaction.transaction_type}: ${props.transaction.amount}</li>
+    <React.Fragment>
+      <DateDisplay date={props.transaction.created_at}/> - {props.transaction.transaction_type}: ${props.transaction.amount}
+    </React.Fragment>
   )
 }
 export default TransactionDisplay

@@ -5,6 +5,7 @@ import { API_URL } from '../actions/ApiUrl'
 import Auth from '../modules/Auth'
 import TransactionTypeSelector from '../material-ui/TransactionTypeSelector'
 import TransactionHistory  from '../components/TransactionHistory';
+import ClearHistoryButton from '../material-ui/ClearHistoryButton'
 
 class TransactionDashboard extends Component {
     constructor(props) {
@@ -31,11 +32,18 @@ class TransactionDashboard extends Component {
             }
         }).then(res => res.json()).then(transactions => this.setState({transactionHistory: transactions}))
     }
+
+    closeHistoryButtonClick = () => {
+        this.setState({
+            transactionHistory: []
+        })
+    }
     
     render() {
         let transactionForm;
         let seeTransactionHistoryButton;
         let depositButton;
+        let closeTransactionHistoryButton;
         let withdrawalButton;
         let selectTransactionTypelabel;
         let transactionHistory;
@@ -51,6 +59,7 @@ class TransactionDashboard extends Component {
 
         if(this.state.transactionHistory.length !== 0) {
             transactionHistory = <TransactionHistory transactions={this.state.transactionHistory} />
+            closeTransactionHistoryButton = <ClearHistoryButton closeHistoryButtonClick={this.closeHistoryButtonClick}/>
         } else {
             seeTransactionHistoryButton = <button onClick={this.handleTransactionHistoryClick}>See Transaction History</button>
         }
@@ -64,6 +73,7 @@ class TransactionDashboard extends Component {
                 <TransactionTypeSelector handleClick={this.handleClick}/>
                 {transactionForm}<br />
                 {transactionHistory}<br />
+                {closeTransactionHistoryButton}<br />
                 {seeTransactionHistoryButton}<br /> 
                 <button onClick={this.props.cancelTransaction}>Exit Transaction Dashboard</button>
             </div>

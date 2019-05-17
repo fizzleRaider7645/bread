@@ -1,12 +1,12 @@
 import React from 'react'
 import TransactionDisplay from './TransactionDisplay'
 
-const TransactionHistoryDashboard = props => {
-      const transactions = props.transactions.map( transaction => <ul key={transaction.id}><TransactionDisplay transaction={transaction}/></ul>)
+const TransactionHistory = props => {
+    const transactions = props.transactions.map( transaction => <p key={transaction.id}><TransactionDisplay transaction={transaction}/></p>)
     return (
-    <div className="TransactionHistoryDashboard">
+    <div className="TransactionHistory">
     {transactions}
     </div>
   )
 }
-export default TransactionHistoryDashboard
+export default TransactionHistory
