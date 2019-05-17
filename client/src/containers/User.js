@@ -41,7 +41,6 @@ class User extends Component {
         if (this.state.actuateTransaction) {
             transactionDashboard = <TransactionDashboard updateUserState={this.updateActuateTransaction} cancelTransaction={this.handleTransactionClick}/>
         } else {
-            // transactionButton = <button onClick={this.handleTransactionClick}>See Transaction Dashboard</button>
             transactionButton = <TransactionDashboardButton handleTransactionClick={this.handleTransactionClick}/>
         }
 

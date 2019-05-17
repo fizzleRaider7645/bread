@@ -22,7 +22,7 @@ function PaperSheet(props) {
         </Typography>
         <Typography component="p">
          <br />Email: {props.user.email}
-        </Typography>
+        </Typography><br />
       </Paper>
     </React.Fragment>
   );

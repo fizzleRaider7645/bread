@@ -6,6 +6,8 @@ import Auth from '../modules/Auth'
 import TransactionTypeSelector from '../material-ui/TransactionTypeSelector'
 import TransactionHistory  from '../components/TransactionHistory';
 import ClearHistoryButton from '../material-ui/ClearHistoryButton'
+import ExitDashboardButton from '../material-ui/ExitDashboardButton'
+import SeeTransactionHistoryButton from '../material-ui/SeeTransactionHistoryButton'
 
 class TransactionDashboard extends Component {
     constructor(props) {
@@ -43,7 +45,7 @@ class TransactionDashboard extends Component {
         let transactionForm;
         let seeTransactionHistoryButton;
         let depositButton;
-        let closeTransactionHistoryButton;
+        let clearTransactionHistoryButton;
         let withdrawalButton;
         let selectTransactionTypelabel;
         let transactionHistory;
@@ -59,23 +61,20 @@ class TransactionDashboard extends Component {
 
         if(this.state.transactionHistory.length !== 0) {
             transactionHistory = <TransactionHistory transactions={this.state.transactionHistory} />
-            closeTransactionHistoryButton = <ClearHistoryButton closeHistoryButtonClick={this.closeHistoryButtonClick}/>
+            clearTransactionHistoryButton = <ClearHistoryButton closeHistoryButtonClick={this.closeHistoryButtonClick}/>
         } else {
-            seeTransactionHistoryButton = <button onClick={this.handleTransactionHistoryClick}>See Transaction History</button>
+            seeTransactionHistoryButton = <SeeTransactionHistoryButton handleTransactionHistoryClick={this.handleTransactionHistoryClick}/>
         }
 
         return (
             <div>
                 <br />
-                {/* {selectTransactionTypelabel}<br />
-                {depositButton}<br />
-                {withdrawalButton}<br /> */}
                 <TransactionTypeSelector handleClick={this.handleClick}/>
                 {transactionForm}<br />
                 {transactionHistory}<br />
-                {closeTransactionHistoryButton}<br />
+                {clearTransactionHistoryButton}<br />
                 {seeTransactionHistoryButton}<br /> 
-                <button onClick={this.props.cancelTransaction}>Exit Transaction Dashboard</button>
+                <ExitDashboardButton cancelTransaction={this.props.cancelTransaction}/>
             </div>
         )
     }
