@@ -3,6 +3,7 @@ import { connect } from 'react'
 import TransactionForm from './TransactionForm';
 import { API_URL } from '../actions/ApiUrl'
 import Auth from '../modules/Auth'
+import TransactionTypeSelector from '../material-ui/TransactionTypeSelector'
 import TransactionHistory  from '../components/TransactionHistory';
 
 class TransactionDashboard extends Component {
@@ -14,9 +15,10 @@ class TransactionDashboard extends Component {
         }
     }
 
+
     handleClick = (event) => {
         this.setState({
-            transactionType: event.target.name
+            transactionType: event.target.value
         })
     }
 
@@ -44,7 +46,7 @@ class TransactionDashboard extends Component {
             withdrawalButton = <button onClick={this.handleClick} name="Withdrawal">Withdrawal</button>
         } else {
             selectTransactionTypelabel = <label>{this.state.transactionType}</label>
-            transactionForm = <TransactionForm updateUserState={this.props.updateUserState} transactionType={this.state.transactionType}/>
+            transactionForm = <TransactionForm key={this.state.transactionType} updateUserState={this.props.updateUserState} transactionType={this.state.transactionType}/>
         }
 
         if(this.state.transactionHistory.length !== 0) {
@@ -56,9 +58,10 @@ class TransactionDashboard extends Component {
         return (
             <div>
                 <br />
-                {selectTransactionTypelabel}<br />
+                {/* {selectTransactionTypelabel}<br />
                 {depositButton}<br />
-                {withdrawalButton}<br />
+                {withdrawalButton}<br /> */}
+                <TransactionTypeSelector handleClick={this.handleClick}/>
                 {transactionForm}<br />
                 {transactionHistory}<br />
                 {seeTransactionHistoryButton}<br /> 

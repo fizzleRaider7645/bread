@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux'
-import ContainedButton from '../material-ui/SubmitButton'
+import SubmitButton from '../material-ui/SubmitButton'
 import LoginTextBox from '../material-ui/LoginTextBox'
 import LoginPasswordBox from '../material-ui/LoginPasswordBox'
 
@@ -29,7 +29,7 @@ class Login extends Component {
                     <h3 className="LoginHeader">Login</h3>
                     <LoginTextBox parentState={this.state} handleChange={this.handleChange}/><br />
                     <LoginPasswordBox parentState={this.state} handleChange={this.handleChange} /><br />
-                    <p><ContainedButton class={"submit"}/></p>
+                    <p><SubmitButton class={"submit"}/></p>
                 </form>
             </div>
         )

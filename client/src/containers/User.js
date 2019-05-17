@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/User'
 import TransactionDashboard from './TransactionDashboard'
-import Balance from '../components/Balance'
 import { getTransactionHistory } from '../actions/User'
+import { default as CurrentBalancePaper } from '../material-ui/Paper'
+import TransactionDashboardButton from '../material-ui/SeeTransactionDashboardButton'
 import '../App.css';
 
 class User extends Component {
@@ -36,16 +37,17 @@ class User extends Component {
     render() {
         let transactionButton;
         let transactionDashboard;
+
         if (this.state.actuateTransaction) {
             transactionDashboard = <TransactionDashboard updateUserState={this.updateActuateTransaction} cancelTransaction={this.handleTransactionClick}/>
         } else {
-            transactionButton = <button onClick={this.handleTransactionClick}>See Transaction Dashboard</button>
+            // transactionButton = <button onClick={this.handleTransactionClick}>See Transaction Dashboard</button>
+            transactionButton = <TransactionDashboardButton handleTransactionClick={this.handleTransactionClick}/>
         }
 
         return (
             <div className="userContainer">
-            User Email: {this.props.user.email}<br />
-            <Balance />
+            <CurrentBalancePaper user={this.props.user} />
             { transactionDashboard } <br />
             { transactionButton }<br />
             </div>

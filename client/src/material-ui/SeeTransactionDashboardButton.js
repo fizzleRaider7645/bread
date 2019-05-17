@@ -12,18 +12,18 @@ const styles = theme => ({
   },
 });
 
-function SubmitButton(props) {
+function TransactionDashboardButton(props) {
   return (
     <React.Fragment>
-      <Button label="submit" type="submit" color="secondary" variant="contained" className={props.class}>
-        {props.class}
+      <Button onClick={props.handleTransactionClick} color="secondary" variant="contained" className={props.class}>
+      See Transaction Dashboard
       </Button>
     </React.Fragment>
   );
 }
 
-SubmitButton.propTypes = {
+TransactionDashboardButton.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SubmitButton);
+export default withStyles(styles)(TransactionDashboardButton);
