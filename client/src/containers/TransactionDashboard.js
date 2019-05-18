@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react'
 import TransactionForm from './TransactionForm';
 import { API_URL } from '../actions/ApiUrl'
 import Auth from '../modules/Auth'
@@ -8,7 +7,7 @@ import TransactionHistory  from '../components/TransactionHistory';
 import ClearHistoryButton from '../material-ui/ClearHistoryButton'
 import ExitDashboardButton from '../material-ui/ExitDashboardButton'
 import SeeTransactionHistoryButton from '../material-ui/SeeTransactionHistoryButton'
-
+import Chart from './Chart'
 class TransactionDashboard extends Component {
     constructor(props) {
         super(props)
@@ -48,12 +47,10 @@ class TransactionDashboard extends Component {
         let clearTransactionHistoryButton;
         let withdrawalButton;
         let selectTransactionTypelabel;
+        let chart;
         let transactionHistory;
 
-        if(this.state.transactionType === null) {
-            selectTransactionTypelabel = <label>Select Type of Transaction: </label>
-            depositButton = <button onClick={this.handleClick} name="Deposit">Deposit</button>
-            withdrawalButton = <button onClick={this.handleClick} name="Withdrawal">Withdrawal</button>
+        if(this.state.transactionType === null ||  this.state.transactionType === "") {
         } else {
             selectTransactionTypelabel = <label>{this.state.transactionType}</label>
             transactionForm = <TransactionForm key={this.state.transactionType} updateUserState={this.props.updateUserState} transactionType={this.state.transactionType}/>
@@ -62,12 +59,14 @@ class TransactionDashboard extends Component {
         if(this.state.transactionHistory.length !== 0) {
             transactionHistory = <TransactionHistory transactions={this.state.transactionHistory} />
             clearTransactionHistoryButton = <ClearHistoryButton closeHistoryButtonClick={this.closeHistoryButtonClick}/>
+            chart = <Chart transactionHistory={this.state.transactionHistory}/>
         } else {
             seeTransactionHistoryButton = <SeeTransactionHistoryButton handleTransactionHistoryClick={this.handleTransactionHistoryClick}/>
         }
 
         return (
             <div>
+                {chart}
                 <br />
                 <TransactionTypeSelector handleClick={this.handleClick}/>
                 {transactionForm}<br />

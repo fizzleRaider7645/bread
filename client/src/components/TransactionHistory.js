@@ -2,7 +2,7 @@ import React from 'react'
 import TransactionDisplay from './TransactionDisplay'
 
 const TransactionHistory = props => {
-    const transactions = props.transactions.map( transaction => <p key={transaction.id}><TransactionDisplay transaction={transaction}/></p>)
+    const transactions = props.transactions.map( transaction => <p key={transaction.id}><TransactionDisplay transaction={transaction}/><br />Notes: {transaction.notes}</p>)
     return (
     <div className="TransactionHistory">
     {transactions}

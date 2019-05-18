@@ -17,7 +17,7 @@ function SeeTransactionHistoryButton(props) {
     <React.Fragment>
       <Button onClick={props.handleTransactionHistoryClick} label="submit" type="submit" color="secondary" variant="contained" className={props.class}>
         See Transaction History
-      </Button>
+      </Button><br />
     </React.Fragment>
   );
 }

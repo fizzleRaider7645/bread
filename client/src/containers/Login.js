@@ -6,8 +6,8 @@ import LoginTextBox from '../material-ui/LoginTextBox'
 import LoginPasswordBox from '../material-ui/LoginPasswordBox'
 
 class Login extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             email: '',
             password: ''
@@ -22,7 +22,6 @@ class Login extends Component {
     }
 
     render() {
-        let submitButton;
         return (
             <div className="LoginContainter">
                 <form onSubmit={(event) => this.props.handleLoginSubmit(event, this.state)} className="LoginForm">

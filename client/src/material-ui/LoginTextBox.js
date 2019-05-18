@@ -38,7 +38,7 @@ class LoginTextBox extends React.Component {
             label="Email"
             name="email"
             value={this.props.parentState.email}
-            className={classes.textField}
+            // className={classes.textField}
             onChange={this.props.handleChange}
             margin="normal"
             variant="outlined"
