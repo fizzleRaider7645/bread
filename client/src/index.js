@@ -5,7 +5,7 @@ import './index.css';
 import App from './App'
 import { store } from './store.js'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { deepOrange, amber } from '@material-ui/core/colors'
+import { deepOrange } from '@material-ui/core/colors'
 import * as serviceWorker from './serviceWorker';
 
 const theme = createMuiTheme({

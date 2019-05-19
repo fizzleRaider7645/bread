@@ -44,17 +44,17 @@ class TransactionDashboard extends Component {
     render() {
         let transactionForm;
         let seeTransactionHistoryButton;
-        let depositButton;
+        // let depositButton;
         let clearTransactionHistoryButton;
-        let withdrawalButton;
-        let selectTransactionTypelabel;
+        // let withdrawalButton;
+        // let selectTransactionTypelabel;
         let chart;
         let transactionHistory;
-        let chartData = this.state.transactionHistory
+        // let chartData = this.state.transactionHistory
 
         if(this.state.transactionType === null ||  this.state.transactionType === "") {
         } else {
-            selectTransactionTypelabel = <label>{this.state.transactionType}</label>
+            // selectTransactionTypelabel = <label>{this.state.transactionType}</label>
             transactionForm = <TransactionForm key={this.state.transactionType} updateUserState={this.props.updateUserState} transactionType={this.state.transactionType}/>
         }
 

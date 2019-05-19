@@ -13,23 +13,19 @@ class Chart extends Component {
                     label: 'Deposits',
                     borderColor: 'rgb(0, 0, 0)',
                     backgroundColor: 'rgb(102, 204, 0)',
+                    hoverBorderWidth: 2,
                     fill: false,
-                    hooverBackgroundColor: 'green',
                     data: sortChartData(props.transactionHistory).monthlyDeposits
                 },{
                     label: 'Withdrawals',
                     borderColor: 'rgb(0, 0, 0)',
                     backgroundColor: 'rgb(255, 0, 0)',
+                    hoverBorderWidth: 2,
                     fill: false,
-                    hooverBackgroundColor: 'red',
                     data: sortChartData(props.transactionHistory).monthlyWithdrawals
                 }]
             }
         }
-    }
-
-    componentDidUpdate() {
-        console.log('props updating', this.props)
     }
 
     render() {
@@ -43,7 +39,7 @@ class Chart extends Component {
                 options={{
                     title: {
                         display: true,
-                        text: 'Account Balances',
+                        text: 'Monthly Deposits/Withdrawals',
                         fontSize: 15
                     },
                     legend: {
