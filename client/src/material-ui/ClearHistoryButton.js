@@ -17,7 +17,7 @@ function ClearHistoryButton(props) {
   return (
     <React.Fragment>
       <Button onClick={props.closeHistoryButtonClick} label="submit" type="submit" color="secondary" variant="contained">
-        Close
+        Clear
       </Button>
     </React.Fragment>
   );

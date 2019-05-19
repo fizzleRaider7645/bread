@@ -1,33 +1,42 @@
 import React, { Component } from 'react'
-import { Line } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
+import { sortChartData } from './HelperFunctions/ChartData'
 
 class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            transactionHistory: this.props.transactionHistory,
             chartData: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 datasets: [{
-                    label: 'Account Balance',
-                    borderColor: 'rgb(255, 255, 153)',
-                    fill: true,
-                    pointBackgroundColor: 'rgb(255, 153, 51)',
-                    pointHoverBorderColor: 'rgb(0, 255, 255)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
+                    label: 'Deposits',
+                    borderColor: 'rgb(0, 0, 0)',
+                    backgroundColor: 'rgb(102, 204, 0)',
+                    fill: false,
+                    hooverBackgroundColor: 'green',
+                    data: sortChartData(props.transactionHistory).monthlyDeposits
+                },{
+                    label: 'Withdrawals',
+                    borderColor: 'rgb(0, 0, 0)',
+                    backgroundColor: 'rgb(255, 0, 0)',
+                    fill: false,
+                    hooverBackgroundColor: 'red',
+                    data: sortChartData(props.transactionHistory).monthlyWithdrawals
                 }]
             }
         }
     }
 
-    static defaultProps = {
-
+    componentDidUpdate() {
+        console.log('props updating', this.props)
     }
 
     render() {
-        console.log(this.props.transactionHistory)
+        sortChartData(this.props.transactionHistory)
         return (
             <div className="chart" >
-            <Line
+            <Bar
                 data={this.state.chartData}
                 width={100}
                 height={50}
@@ -38,7 +47,7 @@ class Chart extends Component {
                         fontSize: 15
                     },
                     legend: {
-                        display: false
+                        display: true
                     }
                 }}
             />

@@ -8,6 +8,7 @@ import ClearHistoryButton from '../material-ui/ClearHistoryButton'
 import ExitDashboardButton from '../material-ui/ExitDashboardButton'
 import SeeTransactionHistoryButton from '../material-ui/SeeTransactionHistoryButton'
 import Chart from './Chart'
+
 class TransactionDashboard extends Component {
     constructor(props) {
         super(props)
@@ -49,6 +50,7 @@ class TransactionDashboard extends Component {
         let selectTransactionTypelabel;
         let chart;
         let transactionHistory;
+        let chartData = this.state.transactionHistory
 
         if(this.state.transactionType === null ||  this.state.transactionType === "") {
         } else {
