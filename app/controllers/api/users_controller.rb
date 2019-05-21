@@ -10,7 +10,6 @@ class Api::UsersController < ApplicationController
 
     def account
         user = User.find_by_auth_token!(request.headers[:token])
-        # account = user.account
         render json: user
     end
 

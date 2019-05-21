@@ -26,9 +26,9 @@ const styles = theme => ({
 });
 
 class NumericalInput extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
 
     handleChange = event => {
         this.props.handleInputChange(event)

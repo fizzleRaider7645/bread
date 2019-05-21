@@ -1,3 +1,5 @@
+/* THIS FILE HANDLES LOGIN/LOGOUT/REGISTRATION OF USER  - OUTTER SECURITY LAYER */
+
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -17,7 +19,7 @@ class App extends Component {
       auth: Auth.isUserAuthenticated()
     };
   }
-
+/* Login/Logout/Register/ fetching START */
   handleRegistrationSubmit = (event, data) => {
     event.preventDefault()
     fetch(`${API_URL}/users`, {
@@ -76,16 +78,12 @@ class App extends Component {
       this.props.unsetUser()
     }).catch(err => console.log(err))
   }
+/* Login/Logout/Register/ fetching END */
 
   render() {
     return (
       <Router>
-        {/* <Link to="/login">Login </Link> */}
-        {/* <Link to="/register">Register </Link> */}
-        {/* <Link to="/account">Account </Link> */}
-        {/* <button onClick={this.handleLogOut}>Log Out</button> */}
         <React.Fragment>
-        {/* <h1 className="AppTitle" >*Bread* Expense Tracker</h1> */}
         <Navbar handleLogOut={ this.handleLogOut } userAuth={this.state.auth}/>
           <Route 
             exact path="/register" 

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 class Balance extends Component {
-    constructor() {
-        super();
-    }
+    
     render(){
         let accountBalance;
         if(this.props.user.account !== undefined) {

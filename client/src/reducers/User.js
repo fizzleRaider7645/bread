@@ -6,8 +6,6 @@ export default (state = initial, action) => {
         return action.payload;
         case types.UPDATE_BALANCE:
         return {...state, account: { balance: action.payload } }
-        // case types.GET_TRANSACTION_HISTORY:
-        // return {...state, transactions: action.payload }
         case types.USER_LOGOUT:
         return {};
         default:

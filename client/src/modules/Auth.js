@@ -5,7 +5,7 @@ class Auth {
     }
 
     static isUserAuthenticated() {
-        // const token = sessionStorage.getItem('token')
+        /* const token = sessionStorage.getItem('token') */
         const token = this.getToken()
         return token !== null
     }
