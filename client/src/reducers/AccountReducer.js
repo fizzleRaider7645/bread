@@ -8,6 +8,8 @@ export default (state = initial, action) => {
         return {...state, account: { balance: action.payload } }
         case types.USER_LOGOUT:
         return {};
+        case types.ACTUATE_TRANSACTION:
+            return { ...state, transactions: [...state.transactions, action.payload] }
         default:
             return state;
     }

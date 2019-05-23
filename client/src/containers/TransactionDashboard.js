@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TransactionForm from './TransactionForm';
 import { API_URL } from '../actions/ApiUrl'
+import { connect } from 'react-redux'
 import Auth from '../modules/Auth'
 import TransactionTypeSelector from '../material-ui/TransactionTypeSelector'
 import TransactionHistory  from '../components/TransactionHistory';
@@ -26,13 +27,17 @@ class TransactionDashboard extends Component {
     }
 
     handleTransactionHistoryClick = () => {
-        fetch(`${ API_URL }/transactions`, {
-            method: 'GET',
-            headers: {
-                token: Auth.getToken(),
-                'Authorization': `Token ${Auth.getToken()}`
-            }
-        }).then(res => res.json()).then(transactions => this.setState({transactionHistory: transactions}))
+        // fetch(`${ API_URL }/transactions`, {
+        //     method: 'GET',
+        //     headers: {
+        //         token: Auth.getToken(),
+        //         'Authorization': `Token ${Auth.getToken()}`
+        //     }
+        // }).then(res => res.json()).then(transactions => this.setState({transactionHistory: transactions}))
+        this.setState({
+            transactionHistory: this.props.transactionHistory
+        })
+
     }
 
     closeHistoryButtonClick = () => {
@@ -68,8 +73,7 @@ class TransactionDashboard extends Component {
 
         return (
             <div>
-                {chart}
-                <br />
+                {chart}<br />
                 <TransactionTypeSelector handleClick={this.handleClick}/>
                 {transactionForm}<br />
                 {transactionHistory}<br />
@@ -81,5 +85,9 @@ class TransactionDashboard extends Component {
     }
 }
 
-export default TransactionDashboard
-// export default connect(null, getTransactionHistory)(TransactionDashboard)
+const mapStateToProps = (state) => {
+    return {transactionHistory: state.user.transactions}
+}
+
+// export default TransactionDashboard
+export default connect(mapStateToProps, null)(TransactionDashboard)

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUser } from '../actions/User'
+import { getUser } from '../actions/UserActions'
 import TransactionDashboard from './TransactionDashboard'
-import { getTransactionHistory } from '../actions/User'
+// import { getTransactionHistory } from '../actions/User'
 import { default as CurrentBalancePaper } from '../material-ui/Paper'
 import TransactionDashboardButton from '../material-ui/SeeTransactionDashboardButton'
 import '../App.css';
@@ -60,5 +60,6 @@ const mapStatetoProps = (state) => {
     })
   }
 
-export default connect(mapStatetoProps, { getUser, getTransactionHistory })(User)
+export default connect(mapStatetoProps, { getUser })(User)
+// getTransactionHistory
 

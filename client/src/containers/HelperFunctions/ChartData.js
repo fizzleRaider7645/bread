@@ -1,16 +1,24 @@
+
 const transactionMonth = () => {
     return [0,0,0,0,0,0,0,0,0,0,0,0]
 }
 
 
 export const sortChartData = (transactions) => {
+    console.log(transactions)
     let deposits = [];
     let monthlyWithdrawals = transactionMonth();
     let monthlyDeposits = transactionMonth();
     let withdrawals = [];
+    let transactionType;
     if(transactions.length !== 0) {
         transactions.forEach(transaction => {
-            if(transaction.transaction_type === "Deposit") {
+            // if(transaction.transaction_type === "Deposit") {
+            //     deposits.push(transaction)
+            // } else {
+            //     withdrawals.push(transaction)
+            // }
+            if(transaction.transaction_type === "Deposit" || transaction.transactionType === "Deposit") {
                 deposits.push(transaction)
             } else {
                 withdrawals.push(transaction)
