@@ -32,41 +32,4 @@ export const getUser = () => {
     }
 }
 
-// export const createTransaction = (data) => {
-
-//     return (dispatch, getState) => {
-//         let currentBalance = getState().user.account.balance
-//         if(data.transactionType === "Deposit") {
-//             currentBalance += Number(data.transactionAmount)
-//         } else {
-//             currentBalance -= Number(data.transactionAmount)
-//         }
-//         dispatch({
-//             type: types.UPDATE_BALANCE,
-//             payload: currentBalance
-//         })
-//     }
-// }
-
-// const setTransactionHistory = payload => {
-//     return {
-//         type: types.GET_TRANSACTION_HISTORY,
-//         payload
-//     }
-// }
-
-
-// export const getTransactionHistory = () => {
-//     return dispatch => {
-//         return fetch(`${ API_URL }/transactions`, {
-//             method: 'GET',
-//             headers: {
-//               token: Auth.getToken(),
-//               'Authorization': `Token ${Auth.getToken()}`
-//             }
-//         }).then(res => res.json()).then(transactions => dispatch(setTransactionHistory(transactions)))
-//     }
-// }
-
-
 

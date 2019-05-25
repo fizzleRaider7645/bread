@@ -16,8 +16,13 @@ export const actuateTransaction = (state) => {
                 'Content-Type': 'application/json'
             }
         }).then( res => {
+            const matchDatabaseObj = {
+                transaction_type: state.transactionType,
+                amount: state.transactionAmount,
+                notes: state.transactionNotes
+            }
             dispatch({
-                type:  types.ACTUATE_TRANSACTION, payload: {...state, id: Math.random(), created_at: new Date()}
+                type:  types.ACTUATE_TRANSACTION, payload: {...matchDatabaseObj, id: Math.random(), created_at: new Date()}
             })
             if(res.status === 400) {
                 alert('Invalid: Must Enter an Amount to Complete Transaction')
@@ -29,7 +34,7 @@ export const actuateTransaction = (state) => {
 /* TO CREATE A NEW TRANSACTION  - END */
 
 /* TO UPDATE BALANCE FOLLOWING A TRANSACTION - START */
-export const createTransaction = (data) => {
+export const updateBalance = (data) => {
 
     return (dispatch, getState) => {
         let currentBalance = getState().user.account.balance

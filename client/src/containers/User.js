@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/UserActions'
 import TransactionDashboard from './TransactionDashboard'
-// import { getTransactionHistory } from '../actions/User'
 import { default as CurrentBalancePaper } from '../material-ui/Paper'
 import TransactionDashboardButton from '../material-ui/SeeTransactionDashboardButton'
 import '../App.css';
@@ -28,6 +27,11 @@ class User extends Component {
         }
     }
 
+    /* updateActuateTransaction IS A CALL BACK PASSED TO TransactionForm THROUGH 
+       TransactionDashboard. WHEN A TRANSACTION IS COMPLETED IN TransactionForm 
+       THE CB IS CALLED RESETTING actuateTransaction TO FALSE, HIDING 
+       THE TransactionDashboard
+    */
     updateActuateTransaction = () => {
         this.setState({
             actuateTransaction: false
@@ -61,5 +65,4 @@ const mapStatetoProps = (state) => {
   }
 
 export default connect(mapStatetoProps, { getUser })(User)
-// getTransactionHistory
 

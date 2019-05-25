@@ -1,14 +1,12 @@
-/* HANDLES LOGIN/LOGOUT/REGISTRATION OF USER  - OUTTER SECURITY LAYER */
-
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './containers/Login';
 import Register from './containers/Register';
 import User from './containers/User'
-import Auth from './modules/Auth';
 import { unsetUser } from './actions/UserActions'
 import { API_URL } from './actions/ApiUrl';
+import Auth from './modules/Auth';
 import Navbar from './material-ui/Navbar'
 import './App.css';
 

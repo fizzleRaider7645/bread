@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
-import { API_URL } from '../actions/ApiUrl'
-import Auth from '../modules/Auth'
-import { actuateTransaction } from '../actions/TransactionActions'
-import { connect } from 'react-redux'
-import { createTransaction } from '../actions/TransactionActions'
-import TransactionFormAmountDisplay from '../components/TransactionFormAmountDisplay'
-import OutlinedTextField from '../material-ui/TextInput'
-import ContainedButton from '../material-ui/SubmitButton'
-import NumericalInput from '../material-ui/NumericalInput'
+import React, { Component } from 'react';
+import { actuateTransaction } from '../actions/TransactionActions';
+import { connect } from 'react-redux';
+import { updateBalance } from '../actions/TransactionActions';
+import TransactionFormAmountDisplay from '../components/TransactionFormAmountDisplay';
+import OutlinedTextField from '../material-ui/TextInput';
+import ContainedButton from '../material-ui/SubmitButton';
+import NumericalInput from '../material-ui/NumericalInput';
 
 class TransactionForm extends Component {
     constructor(props) {
@@ -19,23 +17,6 @@ class TransactionForm extends Component {
             transactionComplete: false
         }
     }
-    // actuateTransaction = (state) => {
-    //     fetch(`${ API_URL }/transactions`, {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //           transaction: state
-    //         }),
-    //         headers: {
-    //             token: Auth.getToken(),
-    //             'Authorization': `Token ${ Auth.getToken() }`,
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then( res => {
-    //         if(res.status === 400) {
-    //             alert('Invalid: Must Enter an Amount to Complete Transaction')
-    //         }
-    //     }).catch(err => console.log(err))
-    // }
 
     handleInputChange = (event) => {
         this.setState({
@@ -51,9 +32,8 @@ class TransactionForm extends Component {
 
     handleSubmit = (event, state) => {
         event.preventDefault()
-        this.props.createTransaction(state)
-        // this.actuateTransaction(state)
-        this.props.actuateTransaction(state)
+        this.props.updateBalance(state) /* UPDATES BALANCE IN REDUX STORE */
+        this.props.actuateTransaction(state) /* CREATES NEW TRANSACTION IN RAILS & ADDS NEW TRANSACTION TO REDUX STORE*/
         this.setState({
             transactionComplete: true
         })
@@ -74,4 +54,4 @@ class TransactionForm extends Component {
     }
 }
 
-export default connect(null, { createTransaction, actuateTransaction })(TransactionForm)
+export default connect(null, { updateBalance, actuateTransaction })(TransactionForm)

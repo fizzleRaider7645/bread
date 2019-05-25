@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { connect } from 'react-redux'
 import SubmitButton from '../material-ui/SubmitButton'
 import LoginTextBox from '../material-ui/LoginTextBox'
 import LoginPasswordBox from '../material-ui/LoginPasswordBox'
@@ -35,4 +34,4 @@ class Login extends Component {
     }
 }
 
-export default connect(null, null)(Login)
+export default Login

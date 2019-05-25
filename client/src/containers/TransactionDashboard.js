@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import TransactionForm from './TransactionForm';
-import { API_URL } from '../actions/ApiUrl'
 import { connect } from 'react-redux'
-import Auth from '../modules/Auth'
 import TransactionTypeSelector from '../material-ui/TransactionTypeSelector'
 import TransactionHistory  from '../components/TransactionHistory';
 import ClearHistoryButton from '../material-ui/ClearHistoryButton'
@@ -27,17 +25,9 @@ class TransactionDashboard extends Component {
     }
 
     handleTransactionHistoryClick = () => {
-        // fetch(`${ API_URL }/transactions`, {
-        //     method: 'GET',
-        //     headers: {
-        //         token: Auth.getToken(),
-        //         'Authorization': `Token ${Auth.getToken()}`
-        //     }
-        // }).then(res => res.json()).then(transactions => this.setState({transactionHistory: transactions}))
         this.setState({
             transactionHistory: this.props.transactionHistory
         })
-
     }
 
     closeHistoryButtonClick = () => {
@@ -49,17 +39,12 @@ class TransactionDashboard extends Component {
     render() {
         let transactionForm;
         let seeTransactionHistoryButton;
-        // let depositButton;
         let clearTransactionHistoryButton;
-        // let withdrawalButton;
-        // let selectTransactionTypelabel;
         let chart;
         let transactionHistory;
-        // let chartData = this.state.transactionHistory
 
         if(this.state.transactionType === null ||  this.state.transactionType === "") {
         } else {
-            // selectTransactionTypelabel = <label>{this.state.transactionType}</label>
             transactionForm = <TransactionForm key={this.state.transactionType} updateUserState={this.props.updateUserState} transactionType={this.state.transactionType}/>
         }
 
@@ -89,5 +74,4 @@ const mapStateToProps = (state) => {
     return {transactionHistory: state.user.transactions}
 }
 
-// export default TransactionDashboard
 export default connect(mapStateToProps, null)(TransactionDashboard)
