@@ -2,7 +2,7 @@ Bread
 This application allows users to create an account, make withdrawals and deposits, and keep track of their account balance
 
 Installation
-Clone repo "https://github.com/fizzleRaider7645/bread" cd into the file's location run bundle install
+Clone repo "https://github.com/fizzleRaider7645/bread" cd into the file's location run bundle install and npm install
 
 Usage
 Enter rake start in terminal and the app should automatically start running at http://localhost:3000/. A user can either login if they already have an account or signup. Users make deposits and withdrawals, track their current balance, and see a double-bar graph of the number of deposits and withdrawals they've made for each month in the Transaction History component.
